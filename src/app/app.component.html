@@ -1,6 +1,11 @@
 <div>
   <h1>{{title}}!</h1>
   <img width="1000" alt="Bowie with Apple" src="assets/img/heroes.jpg">
-  <app-heroes></app-heroes>
+  <nav>
+    <a routerLink="/heroes">
+      <h3>Heroes</h3>
+    </a>
+  </nav>
+  <router-outlet></router-outlet>
   <app-messages></app-messages>
 </div>
