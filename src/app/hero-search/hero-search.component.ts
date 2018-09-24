@@ -14,6 +14,8 @@ import { HeroService } from '../hero.service';
 })
 export class HeroSearchComponent implements OnInit {
 
+  heroes$ = Observable<Hero[]>;
+  
   constructor() { }
 
   ngOnInit() {
