@@ -1,21 +1,15 @@
-<div class="land">
-
-  <div class="land-1">
-    <h2>My Heroes</h2>
-    <div>
-      <label for="">Hero name:
+<h2>My Heroes</h2>
+<div>
+  <label for="">Hero name:
         <input #heroName />
       </label>
-      <button (click)="add(heroName.value); heroName.value=''">add</button>
-    </div>
-    <ul class="heroes">
-      <li *ngFor="let hero of heroes">
-        <a routerLink="/detail/{{hero.id}}">
+  <button (click)="add(heroName.value); heroName.value=''">add</button>
+</div>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
           <span class="badge">{{hero.id}}</span> {{hero.name}}
         </a>
-      </li>
-    </ul>
-  </div>
-
-</div>
     <button class="delete" title="delete hero" (click)="deleteHero()">x</button>
+  </li>
+</ul>
