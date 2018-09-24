@@ -59,9 +59,16 @@ export class HeroService {
       )
   }
 
-  // Log a HeroService message with MessageService
-  private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`)
+  // DELETE: delete hero from server
+  deleteHero (hero: Hero): Observable<Hero> {
+    const id = typeof hero === 'number' ? hero : hero.id;
+    const url = `${this.heroesUrl}/${id}`;
+
+    return this.http.delete<Hero>(url, httpOptions)
+      .pipe(
+        tap(_ => this.log(`Deleted hero id=${id}`)),
+        catchError(this.handleError<Hero>('deleteHero'))
+      )
   }
 
   /**
@@ -78,6 +85,11 @@ export class HeroService {
       this.log(`${operation} failed: ${error.message}`);
 
       return of(result as T);
-    }
+    };
+  }
+
+  // Log a HeroService message with MessageService
+  private log(message: string) {
+    this.messageService.add(`HeroService: ${message}`)
   }
 }
