@@ -3,7 +3,6 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Hero } from './hero';
-import { HEROES } from './mock-heroes';
 import { MessageService } from './message.service';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -19,9 +18,8 @@ export class HeroService {
     private messageService: MessageService
   ) { }
 
+  // Get heroes from server
   getHeroes(): Observable<Hero[]> {
-    // TODO: send the message _after_ fetching the heroes
-    this.messageService.add('HeroService: fetched heroes');
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
         tap(heroes => this.log('fetched heroes')),
@@ -29,10 +27,13 @@ export class HeroService {
       );
   }
 
+  // Get hero by id. 404 if not found
   getHero(id: number): Observable<Hero> {
-    // TODO: send the message _after_ fetching the hero
-    this.messageService.add(`HeroService: fetched hero id${id}`);
-    return of(HEROES.find(hero => hero.id === id));
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.get<Hero>(url).pipe(
+      tap(_ => this.log(`fetched hero id=${id}`)),
+      catchError(this.handleError<Hero>(`getHero id=${id}`))
+  )
   }
 
   // Log a HeroService message with MessageService
