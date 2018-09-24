@@ -23,7 +23,7 @@ export class HeroSearchComponent implements OnInit {
     this.searchTerms.next(term);
   }
 
-  constructor() { }
+  constructor(private heroService: HeroService) { }
 
   ngOnInit() {
   }
