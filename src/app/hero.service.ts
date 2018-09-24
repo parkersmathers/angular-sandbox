@@ -33,7 +33,7 @@ export class HeroService {
   }
 
   // Get hero by id. 404 if not found
-  getHero(id: number): Observable<Hero> {
+  getHero (id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
@@ -42,11 +42,20 @@ export class HeroService {
   }
 
   // PUT: update hero on the server
-  updateHero(hero: Hero): Observable<any> {
+  updateHero (hero: Hero): Observable<any> {
     return this.http.put(this.heroesUrl, hero, httpOptions)
       .pipe(
-        tap(_ => this.log(`updated hero id=${id}`)),
+        tap(_ => this.log(`updated hero id=${hero.id}`)),
         catchError(this.handleError<any>('updateHero'))
+      )
+  }
+
+  // POST: add a new hero to the server
+  addHero (hero: Hero): Observable<Hero> {
+    return this.http.post<Hero>(this.heroesUrl, hero, httpOptions)
+      .pipe(
+        tap((hero: Hero) => this.log(`Added hero with id=${hero.id}`)),
+        catchError(this.handleError<Hero>('addHero'))
       )
   }
 
