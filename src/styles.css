@@ -33,7 +33,6 @@ body {
 
 body, input[text], button {
   background-color: rgba(255, 192, 203, 0.4);
-  font-family: Cambria, Georgia;
 }
 
 /* everywhere else */

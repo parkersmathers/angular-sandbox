@@ -23,6 +23,7 @@ export class HeroesComponent implements OnInit {
       .subscribe(heroes => this.heroes = heroes)
   }
 
+  // add hero to list and send request to server
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
@@ -30,6 +31,7 @@ export class HeroesComponent implements OnInit {
       .subscribe(hero => this.heroes.push(hero));
   }
 
+  // delete hero in template and send request to server
   delete (hero: Hero): void {
     this.heroes = this.heroes.filter(h => h !== hero)
     this.heroService.deleteHero(hero).subscribe();

@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Hero } from './hero';
 import { MessageService } from './message.service';
 
+// header in HTTP save requests for web API
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -24,7 +25,7 @@ export class HeroService {
   ) { }
 
   // Get heroes from server
-  getHeroes(): Observable<Hero[]> {
+  getHeroes (): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
         tap(heroes => this.log('fetched heroes')),
@@ -35,10 +36,11 @@ export class HeroService {
   // Get hero by id. 404 if not found
   getHero (id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
-    return this.http.get<Hero>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<Hero>(`getHero id=${id}`))
-    )
+    return this.http.get<Hero>(url)
+      .pipe(
+        tap(_ => this.log(`fetched hero id=${id}`)),
+        catchError(this.handleError<Hero>(`getHero id=${id}`))
+      )
   }
 
   // PUT: update hero on the server
@@ -85,8 +87,7 @@ export class HeroService {
   }
 
   /**
-  * Handle Http operation that failed.
-  * Let the app continue.
+  * Handle Http operation that failed. Let the app continue.
   * @param operation - name of the operation that failed
   * @param result - optional value to return as the observable result
   */
