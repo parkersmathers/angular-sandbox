@@ -1,4 +1,9 @@
 /* HeroesComponent's private CSS styles */
+h2 {
+  transform: rotate(0.5turn);
+  text-align: right;
+}
+
 .heroes {
   margin: 0 0 2em 0;
   list-style-type: none;
