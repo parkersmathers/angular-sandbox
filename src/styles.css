@@ -5,17 +5,17 @@ h1, h2, h3 {
 }
 
 h1 {
-  color: lawngreen;
+  color: rgba(124, 252, 0, .3);
   font-family: 'IBM Plex Sans', Helvetica, sans-serif;
   font-size: 600%;
   box-shadow: 3px 13px transparent, -1em 0 .4em olive;
 }
 
 h2, h3 {
-  color: #444;
+  color: rgba(25, 25, 112, .3);
   font-family: 'IBM Plex Sans', Helvetica, sans-serif;
   font-weight: lighter;
-  font-size: 400%;
+  font-size: 600%;
 }
 
 html {
@@ -29,9 +29,6 @@ html {
 body {
   margin: 2em;
   padding: 0;
-}
-
-body, input[text], button {
   background-color: rgba(255, 192, 203, 0.4);
 }
 

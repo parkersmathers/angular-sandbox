@@ -1,4 +1,21 @@
 /* HeroDetailComponent's private CSS styles */
+.details {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, .6) 90%);
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+h2 {
+  text-shadow: 1px 1px 5px pink;
+}
+
+span {
+  color: palegoldenrod;
+}
+
 label {
   display: inline-block;
   width: 3em;

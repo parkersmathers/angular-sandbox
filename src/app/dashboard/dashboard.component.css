@@ -42,7 +42,7 @@ h4 {
   color: #eee;
   max-height: 120px;
   min-width: 120px;
-  background-color: #607d8b;
+  background-color: rgba(96, 125, 139, .3);
   border-radius: 2px;
 }
 
